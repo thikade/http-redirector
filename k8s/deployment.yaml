@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redirector
+  labels:
+    app: redirector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redirector
+  template:
+    metadata:
+      labels:
+        app: redirector
+    spec:
+      containers:
+        - name: redirector
+          image: redirector:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REDIRECT_URL
+              value: "https://www.example.com"
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "32Mi"
+            limits:
+              cpu: "100m"
+              memory: "64Mi"
