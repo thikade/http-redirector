@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: redirector
-          image: redirector:latest
+          image: ghcr.io/thikade/http-redirector:latest
           ports:
             - containerPort: 8080
           env:
